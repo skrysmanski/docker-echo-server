@@ -1,34 +1,17 @@
-docker & golang
-=======================
+Docker echo server
+==================
+A small tcp echo server written in Golang, packaged in a Docker container.
 
-A small tcp echo server written in Golang, packaged in a container using Docker.io
+You may run it like this (in foreground):
 
-Instructions the hard way
-------------
+	$ docker run --rm -ti -p 8800:8800 krys/echo-server
 
-    #1. install docker http://docs.docker.io/en/latest/installation
-    #2. clone this repository
-    #3. create a docker container
-    $ sudo docker build -t luisbebop/echo-server .
-    #4. run the docker container you have created
-    $ sudo docker run -d -p 8800:8800 luisbebop/echo-server
+or (in background):
 
-Instructions the easy way
-------------
+	$ docker run --rm -d -p 8800:8800 krys/echo-server
 
-This approach will use a container [I previously uploaded to Docker registry](https://index.docker.io/u/luisbebop/echo-server/)
+Credits
+-------
+All credits go to:
 
-    #1. run the docker container already uploaded to http://index.docker.io
-	$ sudo docker run -d -p 8800:8800 luisbebop/echo-server
-	
-Upgrade the container
------------
-
-    # change the code, compile and push to github
-    $ sudo docker build -t luisbebop/echo-server .
-    $ sudo docker push luisbebop/echo-server
-    
-    # on docker server or the same machine
-    $ sudo docker stop container-id
-    $ sudo docker pull luisbebop/echo-server
-    $ sudo docker run -d -p 8800:8800 luisbebop/echo-server
+	https://github.com/luisbebop/echo-server
