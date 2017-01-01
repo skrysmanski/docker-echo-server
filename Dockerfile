@@ -1,13 +1,9 @@
-FROM luisbebop/go1.2
+FROM golang:1.7-alpine
 
-MAINTAINER luisbebop <luisbebop@gmail.com>
-
-# set environment PATH variable again, because docker doesn't recognise it from the base container at building time. 
-ENV PATH $PATH:$GOPATH/bin:$GOROOT/bin
-
-RUN git clone https://github.com/luisbebop/echo-server.git /opt/echo-server/
-RUN cd /opt/echo-server && git pull && go test && go build
+RUN mkdir -p /opt/echo-server
+COPY main.go /opt/echo-server/
+RUN cd /opt/echo-server && go build
 
 EXPOSE 8800
 
-CMD ["/opt/echo-server/echo-server"]
+ENTRYPOINT ["/opt/echo-server/echo-server"]
