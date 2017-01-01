@@ -39,6 +39,6 @@ func handleConnection(conn net.Conn) {
 			return
 		}
 		log.Printf("<->\n%s", hex.Dump(buf[:readBytes]))
-		conn.Write([]byte("CLOUDWALK "+string(buf[:readBytes])))
+		conn.Write([]byte(string(buf[:readBytes])))
 	}
 }
